@@ -16,12 +16,12 @@
                 <tr>
                     <th>Cliente</th>
                     <th>Cantidad de productos</th>
-                    <th>Total</th>
+                    <th>Total $</th>
                 </tr>
                 <tr th:each="empXreg : ${ventasPorCliente}">
                     <td th:text="${empXreg.companyName}"></td>
                     <td th:text="${empXreg.quantity}"></td>
-                    <td th:text="${empXreg.total}"></td>
+                    <td th:text="'$' + ${empXreg.total}"></td>
                 </tr>
             </table>
         </div>

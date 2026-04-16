@@ -20,6 +20,6 @@ public class VentaController {
     public String getVentasPorCliente(Model model) {
         List<VentasPorClienteDTO> ventasPorCliente = ventasPorClienteRepository.findVentasPorCliente();
         model.addAttribute("ventasPorCliente", ventasPorCliente);
-        return "ventas_por_cliente";
+        return "ventasPorCliente";
     }
 }
