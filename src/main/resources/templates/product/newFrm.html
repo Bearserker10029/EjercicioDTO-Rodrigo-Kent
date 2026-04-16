@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <title>Nuevo Producto</title>
+    </head>
+    <body>
+        <main>
+            <div class="container px-4 py-5">
+                <h1 class="pb-2 mb-3 border-bottom">Nuevo Producto</h1>
+                <form method="post" th:action="@{'/product/save'}" class="mt-2">
+                    <div class="mb-3">
+                        <label for="productname" class="form-label">Nombre del Producto</label>
+                        <input type="text" class="form-control" name="productname" id="productname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Categoría</label>
+                        <select name="category" class="form-select" id="category">
+                            <option th:each="category : ${listaCategory}" th:text="${category.getCategoryname()}"
+                                    th:value="${category.getId()}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="supplier" class="form-label">Proveedor</label>
+                        <select name="supplier" class="form-select" id="supplier">
+                            <option th:each="supplier : ${listaSupplier}" th:text="${supplier.getCompanyname()}"
+                                    th:value="${supplier.getId()}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantityperunit" class="form-label">Cantidad por unidad</label>
+                        <input type="text" class="form-control" name="quantityperunit" id="quantityperunit">
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitprice" class="form-label">Precio unitario</label>
+                        <input type="text" class="form-control" name="unitprice" id="unitprice">
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitsinstock" class="form-label">Unidades en stock</label>
+                        <input type="number" class="form-control" name="unitsinstock" id="unitsinstock">
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitsonorder" class="form-label">Unidades ordenadas</label>
+                        <input type="number" class="form-control" name="unitsonorder" id="unitsonorder">
+                    </div>
+                    <div class="mb-3">
+                        <label for="reorderlevel" class="form-label">Nivel de reorden</label>
+                        <input type="number" class="form-control" name="reorderlevel" id="reorderlevel">
+                    </div>
+                    <div class="mb-3 pb-2 form-check">
+                        <input class="form-check-input" type="checkbox" name="discontinued" id="discontinued">
+                        <label class="form-check-label" for="discontinued">¿Descontinuado?</label>
+                    </div>
+                    <a th:href="@{'/product'}" class="btn btn-danger">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </form>
+            </div>
+        </main>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </body>
+</html>

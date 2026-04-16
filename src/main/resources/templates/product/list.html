@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <title>Lista Productos</title>
+    </head>
+    <body>
+        <main>
+            <div class="container px-4 py-5">
+                <h1 class="pb-2 border-bottom">Lista de Productos</h1>
+                <div class="d-flex mt-3 mb-4">
+                    <a class="btn btn-primary" th:href="@{'/product/new'}">Nuevo Producto</a>
+                    <a class="btn btn-secondary ms-auto" th:href="@{'/'}">Regresar</a>
+                </div>
+                <form method="post" th:action="@{/shipper/BuscarTransportistas}">
+                    <input name="searchField" class="form-control mb-3" type="text" placeholder="Search"/>
+                </form>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Product Name</th>
+                            <th>Categoría</th>
+                            <th>Proveedor</th>
+                            <th>Precio Unitario</th>
+                            <th>Stock</th>
+                            <th>¿Descontinuado?</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="product, info : ${listaProductos}">
+                            <td th:text="${info.index + 1}"></td>
+                            <td th:text="${product.productname}"></td>
+                            <td th:text="${product.category.categoryname}"></td>
+                            <td th:text="${product.supplier.companyname}"></td>
+                            <td th:text="${product.unitprice}"></td>
+                            <td th:text="${product.unitsinstock}"></td>
+                            <td th:text="${product.discontinued?'si':'no'}"></td>
+                            <td><a class="btn btn-primary"
+                                   th:href="@{'/product/edit' + '?id=' + ${product.id}}">Editar</a>
+                            </td>
+                            <td><a class="btn btn-danger"
+                                   th:href="@{'/product/delete' + '?id=' + ${product.id}}">Borrar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </body>
+</html>

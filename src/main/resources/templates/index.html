@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragmentos/fragmento2 :: cabecera('Home')"></head>
+    <body>
+        <main>
+            <div class="container px-4 py-5">
+                <h1 class="pb-2 border-bottom">Gestión de Northwind</h1>
+                <a th:href="@{/shipper}">Ir a la gestión de transportistas</a><br/>
+                <a th:href="@{/product}">Ir a la gestión de productos</a><br/>
+                <a th:href="@{/employee/stats}">Estadisticas</a>
+                <div class="mt-5">
+                    <p th:include="fragmentos/fragmento1 :: fr2">esto es un párrafo</p>
+                </div>
+                <div class="mt-5">
+                    <p th:replace="fragmentos/fragmento1 ::  fr2">esto es un párrafo</p>
+                </div>
+            </div>
+        </main>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </body>
+</html>
+
+
